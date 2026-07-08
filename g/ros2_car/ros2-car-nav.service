@@ -1,0 +1,20 @@
+[Unit]
+Description=ROS2 car Nav2 stack on room_open map
+After=network-online.target
+Wants=network-online.target
+Conflicts=car_move_with_turn.service ros2-car-stack.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/ros2_car
+Environment=PYTHONUNBUFFERED=1
+Environment=LOCALIZATION_BACKEND=amcl
+Environment=NAV2_MAP=room_open
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/ros2_car" && exec ./ros2_car.sh nav room_open'
+ExecStopPost=/usr/bin/env bash -lc 'cd "%h/g/ros2_car" && exec ./ros2_car.sh stop'
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

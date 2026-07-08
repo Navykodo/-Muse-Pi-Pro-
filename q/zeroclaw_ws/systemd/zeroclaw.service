@@ -1,0 +1,17 @@
+[Unit]
+Description=ZeroClaw daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/zeroclaw daemon --host 127.0.0.1 --port 42617
+Restart=always
+RestartSec=3
+Environment=HOME=%h
+Environment=PATH=%h/.cargo/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=AGENT_BROWSER_CLI=%h/.cargo/bin/agent-browser
+PassEnvironment=DISPLAY XDG_RUNTIME_DIR
+
+[Install]
+WantedBy=default.target

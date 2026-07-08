@@ -1,0 +1,17 @@
+[Unit]
+Description=ROS2 car HTTP API for ZeroClaw
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/ros2_car
+Environment=PYTHONUNBUFFERED=1
+Environment=LOCALIZATION_BACKEND=amcl
+Environment=NAV2_MAP=room_open
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/ros2_car" && exec ./ros2_car.sh api'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

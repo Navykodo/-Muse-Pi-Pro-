@@ -1,0 +1,22 @@
+[Unit]
+Description=ROS2 car stack: mapping / continue mapping
+After=network-online.target
+Wants=network-online.target
+Conflicts=car_move_with_turn.service ros2-car-nav.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/ros2_car
+Environment=PYTHONUNBUFFERED=1
+Environment=ROS2_CAR_STACK_MODE=continue
+Environment=ROS2_CAR_STACK_MAP=room
+Environment=ROS2_CAR_STACK_X=0
+Environment=ROS2_CAR_STACK_Y=0
+Environment=ROS2_CAR_STACK_YAW_DEG=0
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/ros2_car" && exec ./ros2_car.sh stack'
+ExecStopPost=/usr/bin/env bash -lc 'cd "%h/g/ros2_car" && exec ./ros2_car.sh stop'
+Restart=no
+
+[Install]
+WantedBy=default.target

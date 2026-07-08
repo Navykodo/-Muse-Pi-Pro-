@@ -1,0 +1,17 @@
+[Unit]
+Description=Car alert TCP broadcast forwarder
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/car_alert_tcp
+Environment=CAR_ALERT_HOST=127.0.0.1
+Environment=CAR_ALERT_PORT=16666
+Environment=CAR_ALERT_BUFFER_SIZE=4096
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/car_alert_tcp" && exec ./run.sh'
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

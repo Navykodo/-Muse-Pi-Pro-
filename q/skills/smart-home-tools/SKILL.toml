@@ -1,0 +1,6 @@
+[skill]
+name = "smart-home-tools"
+description = "智能家居控制技能。用于用户要求控制或查询空调和灯：开/关空调、调节空调温度、设置制冷/制热/除湿/送风/自动模式、调整风速、查询空调状态、开灯、关灯、查询灯状态、环境较暗时开灯；也用于天气/气温/降雨等联网搜索结果需要联动空调或灯状态时，以及用户要求根据室内温湿度/当前室温自动建议或调整空调时。必须只通过 http_request POST http://127.0.0.1:8765/tool 调用 Hardware API。空调是模拟控制：smart_home_aircon_control 参数 power 可选 on/off，temperature_c 可选 16-30，mode 可选 cool/heat/dry/fan/auto，fan 可选 auto/low/medium/high；查询用 smart_home_aircon_status。灯是真实控制：smart_home_light_control 参数 power 必填 on/off，底层转接 SMART_HOME_LIGHT_URL 配置的本地灯控 HTTP 服务；查询灯状态用 smart_home_light_status。只有工具返回 ok=true 且 data.completion_ok=true 才能说已经完成。若摄像头/巡逻/哨兵观察明确描述环境较暗、光线不足或看不清，并且用户任务允许主动处理环境，可以打开灯；天气或室温联动时，未得到用户明确授权不要主动开关设备，先给建议或询问。不要把光线暗当成异常告警。"
+version = "1.3.0"
+author = "local-user"
+tags = ["smart-home", "air-conditioner", "ac", "light", "hardware", "simulation"]

@@ -1,0 +1,6 @@
+[skill]
+name = "web-search-tools"
+description = "联网搜索与网页读取技能。用户明确提到联网搜索、网上查、搜索一下、查新闻、查资料、最新消息、最近一周、今天、实时、央视网/新华社/网页来源，或询问天气/气温/降雨/空气质量等需要实时信息时使用。优先用可用的 web_search_tool 搜索，再用 browser/网页读取能力打开结果核验；结果必须给标题、来源、发布时间/更新时间、链接和简短摘要。天气相关请求可结合 smart-home-tools 查询空调/灯状态：仅在用户明确要求联动/调整时控制设备；否则只给建议或询问是否要调整。"
+version = "1.0.0"
+author = "local-user"
+tags = ["web", "search", "news", "weather", "browser", "smart-home"]

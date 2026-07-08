@@ -1,0 +1,43 @@
+# Local agent/runtime state
+.agents/
+.codex/
+
+# Python local environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Nested local project state
+r/plug/.agents/
+r/plug/.codex/
+r/plug/.git/
+r/plug/.venv/
+r/plug/__pycache__/
+
+# Runtime output
+logs/
+shots/
+output/
+maps/
+g/ros2_car/logs/
+g/ros2_car/output/
+g/ros2_car/maps/
+g/rplidar_sdk/output/
+
+# Native build artifacts
+*.o
+*.ko
+*.mod
+*.mod.c
+*.cmd
+*.d
+Module.symvers
+modules.order
+
+# Local RISC-V binaries built from r/serial sources
+r/serial/a
+r/serial/car_move
+r/serial/car_move_with_turn
+r/serial/serial_test
+r/serial/*.c.d

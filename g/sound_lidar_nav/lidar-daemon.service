@@ -1,0 +1,14 @@
+[Unit]
+Description=RPLIDAR HTTP daemon
+After=default.target
+Conflicts=rplidar-motor-stop.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/sound_lidar_nav
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/sound_lidar_nav" && exec ./lidar_daemon.sh'
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

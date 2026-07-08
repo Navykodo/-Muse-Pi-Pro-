@@ -1,0 +1,6 @@
+[skill]
+name = "car-move-tools"
+description = "控制小车前进、后退、左移、右移、任意角度旋转、停止和查询状态。底层已统一到外部 ROS2 car API，但 ZeroClaw 必须只用 http_request POST http://127.0.0.1:8765/tool 调用本地 Hardware API，不要直接调用 8788、shell 或 curl。移动用 {\"tool\":\"car_move\",\"args\":{\"direction\":\"forward/backward/left/right\",\"distance_cm\":30,\"speed_cm_s\":10}}；旋转用 {\"tool\":\"car_turn\",\"args\":{\"angle_degrees\":-90}}；小车动作完成只以返回 data.completion_ok=true 或 data.ros2_result.ok=true 为准，不能自行从 last_result、busy、耗时或文字推断限流/完成/失败；用户说到我这来/过来/朝我转时先查 {\"tool\":\"get_latest_c6_wake_direction\",\"args\":{}}，必须原样使用返回的 action.args.angle_degrees 或 turn_angle_degrees，不要重新计算或取反；停止用 {\"tool\":\"car_stop\",\"args\":{}}；状态用 {\"tool\":\"get_car_status\",\"args\":{}}；如果返回 ROS2_CAR_API_UNAVAILABLE，只说明需要启动 ros2-car-api.service，不要改用旧串口链路。"
+version = "1.0.0"
+author = "local-user"
+tags = ["car", "robot", "movement", "turn", "hardware"]

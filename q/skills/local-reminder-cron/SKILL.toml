@@ -1,0 +1,6 @@
+[skill]
+name = "local-reminder-cron"
+description = "本地语音提醒/闹钟技能。用户要求定时、倒计时、稍后提醒、每天/每周重复提醒时，必须使用 ZeroClaw 内置 cron_add 创建任务；一次性 at 时间必须先按 Asia/Shanghai 理解，再换算成 UTC ISO8601，禁止把北京时间直接写成 Z 时间；任务到点后 curl POST http://127.0.0.1:8765/tool 调用 Hardware API speak_text 播报。不要使用旧的 8787 cron_event。"
+version = "1.0.0"
+author = "local-user"
+tags = ["cron", "reminder", "alarm", "timer", "tts", "hardware-api"]

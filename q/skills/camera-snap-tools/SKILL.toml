@@ -1,0 +1,6 @@
+[skill]
+name = "camera-snap-tools"
+description = "摄像头拍照与图片理解技能。当前对话模型没有视觉能力。用户要求拍照、看画面、描述画面、观察环境时，必须只用 http_request 调 Hardware API 的 camera_describe，body 为 {\"tool\":\"camera_describe\",\"args\":{\"prompt\":\"用户想看的内容\"}}；该 tool 会在 Hardware API 内部一次性完成拍照、拿 path、视觉理解并返回 description/image_path/path。用户要求照片路径时，必须逐次记录返回的 data.image_path 或 data.path。若 camera_describe 明确返回环境过暗、光线不足、看不清或无法判断，并且用户任务需要看清环境，可读取 smart-home-tools，查询灯状态，只有确认灯原本关闭时才开灯补拍一次，本轮打开过灯要在回复前关闭，不关闭原本已开启的灯。若首次视觉结果发现可复核异常，例如烟雾/积水/裸露线缆/人员摔倒或躺地/门窗异常/入侵/障碍物，应先对同一方向补拍确认一次；两次同类异常才算 confirmed_abnormal 并进入告警，未复现则记录为 unconfirmed_suspect。明显明火/正在燃烧可直接告警。严禁调用 camera_capture、image_understand、vision_describe_image、sentry_observe_once、shell、glob_search、screenshot、image_info、curl、Python/PIL/ASCII 或搜索文件系统兜底。"
+version = "1.4.0"
+author = "local-user"
+tags = ["camera", "vision", "photo", "snapshot", "hardware"]

@@ -1,0 +1,9 @@
+x轴前后正值向前，负值向后;y轴左右，正值左，负值右;z轴旋转，正值车头向左旋转，负值车头向右旋转。
+
+脚本名car_move_client，参数分别是“方向”“距离（cm）”“速度（cm/s）”。
+
+向前：python car_move_client forward 100 100
+向后：backward 100 100
+向左：left 100 100
+向右：right 100 100
+急停：stop

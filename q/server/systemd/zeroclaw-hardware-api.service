@@ -1,0 +1,17 @@
+[Unit]
+Description=ZeroClaw Hardware API
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/zeroclaw-home-assistant/server
+Environment=HOME=%h
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=/opt/zeroclaw-home-assistant/server/.venv/bin:%h/.local/bin:%h/.cargo/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/opt/zeroclaw-home-assistant/server/.venv/bin/python /opt/zeroclaw-home-assistant/server/main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

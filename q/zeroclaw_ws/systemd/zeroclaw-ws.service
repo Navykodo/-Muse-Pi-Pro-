@@ -1,0 +1,17 @@
+[Unit]
+Description=ZeroClaw Web UI and C6 voice bridge
+After=network.target zeroclaw.service zeroclaw-hardware-api.service
+Wants=zeroclaw.service zeroclaw-hardware-api.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/zeroclaw-home-assistant/zeroclaw_ws
+Environment=HOME=%h
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=%h/.local/bin:%h/.cargo/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/.local/bin/start-zeroclaw-ws
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

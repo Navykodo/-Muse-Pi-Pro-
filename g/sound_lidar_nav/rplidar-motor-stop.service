@@ -1,0 +1,15 @@
+[Unit]
+Description=Keep RPLIDAR motor stopped when idle
+After=default.target
+Conflicts=lidar-daemon.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/rplidar_sdk
+Environment=RPLIDAR_PORT=/dev/ttyUSB0
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/rplidar_sdk" && exec ./output/Linux/Release/stop_motor --channel --serial "$RPLIDAR_PORT" 115200 --hold'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Camera Snap HTTP/Unix Socket Service
+After=default.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/camera_snap
+Environment=PYTHONPATH=/usr/lib/python3/dist-packages
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/camera_snap" && exec /usr/bin/python3 server.py --host 127.0.0.1 --port 5478'
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

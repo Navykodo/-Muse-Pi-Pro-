@@ -1,0 +1,179 @@
+{
+  "map": "room_open",
+  "places": {
+    "desk": {
+      "created_at": 1782545000.0,
+      "name": "desk",
+      "notes": "room_open annotated table. Target is south of the table so the front camera faces the table.",
+      "type": "table",
+      "updated_at": 1782545000.0,
+      "via_rules": [
+        {
+          "near": "doorway",
+          "radius": 1.8,
+          "via": [
+            "front_door_in"
+          ]
+        }
+      ],
+      "x": 0.53,
+      "y": 0.06,
+      "yaw_deg": 90.0
+    },
+    "doorway": {
+      "created_at": 1782545000.0,
+      "name": "doorway",
+      "notes": "room_open annotated doorway/entrance. Target is inside the open area, offset away from the wall.",
+      "type": "doorway",
+      "updated_at": 1782545000.0,
+      "x": -1.57,
+      "y": 0.46,
+      "yaw_deg": 180.0
+    },
+    "front_door": {
+      "created_at": 1782545000.0,
+      "name": "front_door",
+      "notes": "Compatibility alias for front_door_in. Use front_door_out when the camera must face the doorway/outside.",
+      "type": "door_pass",
+      "updated_at": 1782545000.0,
+      "x": 0.38,
+      "y": 0.07,
+      "yaw_deg": 0.0
+    },
+    "front_door_in": {
+      "created_at": 1782545000.0,
+      "name": "front_door_in",
+      "notes": "room_open indoor door pass-through target. The front camera faces into the room; this is the safe waypoint for doorway-to-room routes.",
+      "type": "door_pass",
+      "updated_at": 1782545000.0,
+      "x": 0.38,
+      "y": 0.07,
+      "yaw_deg": 0.0
+    },
+    "front_door_out": {
+      "created_at": 1782545000.0,
+      "name": "front_door_out",
+      "notes": "room_open indoor door photo target. The front camera faces the doorway/outside; use only when explicitly looking out through the door.",
+      "type": "door_photo",
+      "updated_at": 1782545000.0,
+      "x": 0.38,
+      "y": 0.07,
+      "yaw_deg": 180.0
+    },
+    "window": {
+      "created_at": 1782545000.0,
+      "name": "window",
+      "notes": "room_open annotated window. Target is offset inward from the right wall and faces the window.",
+      "type": "window",
+      "updated_at": 1782545000.0,
+      "via_rules": [
+        {
+          "near": "doorway",
+          "radius": 1.8,
+          "via": [
+            "front_door_in"
+          ]
+        }
+      ],
+      "x": 4.43,
+      "y": 0.36,
+      "yaw_deg": 0.0
+    },
+    "workstation_1": {
+      "created_at": 1782545000.0,
+      "name": "workstation_1",
+      "notes": "room_open annotated workstation 1. Target is north of the marked area so the front camera faces it.",
+      "type": "workstation",
+      "updated_at": 1782545000.0,
+      "via_rules": [
+        {
+          "near": "doorway",
+          "radius": 1.8,
+          "via": [
+            "front_door_in"
+          ]
+        }
+      ],
+      "x": 1.23,
+      "y": -0.24,
+      "yaw_deg": -90.0
+    },
+    "workstation_2": {
+      "created_at": 1782545000.0,
+      "name": "workstation_2",
+      "notes": "room_open annotated workstation 2. Target is north of the marked area so the front camera faces it.",
+      "type": "workstation",
+      "updated_at": 1782545000.0,
+      "via_rules": [
+        {
+          "near": "doorway",
+          "radius": 1.8,
+          "via": [
+            "front_door_in"
+          ]
+        }
+      ],
+      "x": 2.18,
+      "y": -0.24,
+      "yaw_deg": -90.0
+    },
+    "workstation_3": {
+      "created_at": 1782545000.0,
+      "name": "workstation_3",
+      "notes": "room_open annotated workstation 3. Target is north of the marked area so the front camera faces it.",
+      "type": "workstation",
+      "updated_at": 1782545000.0,
+      "via_rules": [
+        {
+          "near": "doorway",
+          "radius": 1.8,
+          "via": [
+            "front_door_in"
+          ]
+        }
+      ],
+      "x": 3.03,
+      "y": -0.24,
+      "yaw_deg": -90.0
+    },
+    "workstation_4": {
+      "created_at": 1782545000.0,
+      "name": "workstation_4",
+      "notes": "room_open annotated lower/right workstation 4. Target is north of the marked area so the front camera faces it.",
+      "type": "workstation",
+      "updated_at": 1782545000.0,
+      "via_rules": [
+        {
+          "near": "doorway",
+          "radius": 1.8,
+          "via": [
+            "front_door_in"
+          ]
+        }
+      ],
+      "x": 4.48,
+      "y": -0.24,
+      "yaw_deg": -90.0
+    },
+    "workstation_4_upper": {
+      "created_at": 1782545000.0,
+      "name": "workstation_4_upper",
+      "notes": "room_open annotated upper workstation 4. Target is south of the marked area so the front camera faces it.",
+      "type": "workstation",
+      "updated_at": 1782545000.0,
+      "via_rules": [
+        {
+          "near": "doorway",
+          "radius": 1.8,
+          "via": [
+            "front_door_in"
+          ]
+        }
+      ],
+      "x": 2.13,
+      "y": 0.36,
+      "yaw_deg": 90.0
+    }
+  },
+  "updated_at": 1782545000.0
+}

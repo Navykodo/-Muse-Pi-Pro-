@@ -1,0 +1,6 @@
+[skill]
+name = "dht11-log-tools"
+description = "读取 DHT11 当前温湿度和历史统计。用户询问当前温度/湿度/室温/最近温湿度，或要求根据室内温湿度建议/调整空调时使用。必须用 http_request POST http://127.0.0.1:8765/tool。当前温湿度请求体必须精确为 {\"tool\":\"get_dht11_latest\",\"args\":{}}；历史统计请求体必须使用 {\"tool\":\"get_dht11_summary\",\"args\":{\"limit\":100}}。如果用户要求根据室温控制空调，读取本技能后还要读取 smart-home-tools；未明确授权时只建议，不主动控制。不要使用 dht11-log-tools、read_latest、read_summary 作为 Hardware API 的 tool 值；不要使用 shell 或 curl。"
+version = "1.1.0"
+author = "local-user"
+tags = ["sensor", "temperature", "humidity", "dht11"]

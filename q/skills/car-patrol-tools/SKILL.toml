@@ -1,0 +1,6 @@
+[skill]
+name = "car-patrol-tools"
+description = "固定小车巡逻技能。用于用户要求巡逻、巡查、从门口到窗户再回门口、门口和窗户四向观察时触发。巡逻/导航/旋转/拍照必须只通过 http_request POST http://127.0.0.1:8765/tool 调用 Hardware API。固定地图为 room_open，固定路线为 front_door_in -> window -> front_door_in。每到一个地点，必须先 camera_describe 拍当前朝向，再连续 3 次调用 car_turn {\"angle_degrees\":-90} 顺时针旋转 90 度并在每次旋转完成后 camera_describe，共 4 次观察；旋转成功只看 data.completion_ok=true 或 data.ros2_result.ok=true。地点导航必须先 car_nav_places {\"map_name\":\"room_open\"} 确认 front_door_in/window，再 car_nav_place {\"map_name\":\"room_open\",\"name\":\"地点\",\"max_duration_sec\":180,\"segment_m\":2.0}，随后 car_nav_wait {\"timeout_sec\":25,\"poll_interval_sec\":5} 判断真正到达；最多等待 3 次。若 camera_describe 明确返回环境过暗、光线不足、看不清或无法判断，应读取/遵守 smart-home-tools，查询 smart_home_light_status；只有能确认灯原本关闭时才可 smart_home_light_control 开灯并重拍该方向，本轮打开过灯必须在巡逻结束、异常或失败退出前关闭，不要关闭原本已开启的灯。视觉首次发现烟雾、积水、裸露线缆、人员摔倒/躺地、门窗异常、入侵或障碍物等可复核异常时，先停止并对同一方向补拍确认；两次同类异常才调用 car-alert-tools 告警，未复现则记录为未确认可疑并可继续巡逻。明显明火/正在燃烧可直接停止并告警。任一步失败立即停止，不要改用 car_move、car_nav_goal、shell、curl、8788 或 ROS2。最终回复只汇报是否发现已确认异常，不汇报正常观察细节。"
+version = "1.2.0"
+author = "local-user"
+tags = ["car", "patrol", "nav", "camera", "hardware"]

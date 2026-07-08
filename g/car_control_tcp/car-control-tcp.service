@@ -1,0 +1,19 @@
+[Unit]
+Description=Bluetooth car TCP control bridge
+After=network-online.target bluetooth.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/g/car_control_tcp
+Environment=CAR_CONTROL_DEVICE=/dev/rfcomm0
+Environment=CAR_CONTROL_HOST=127.0.0.1
+Environment=CAR_CONTROL_PORT=2579
+Environment=CAR_CONTROL_BAUD=9600
+Environment=CAR_CONTROL_SEND_INIT=ZK
+ExecStart=/usr/bin/env bash -lc 'cd "%h/g/car_control_tcp" && exec ./run.sh'
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

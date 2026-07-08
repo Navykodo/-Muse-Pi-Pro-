@@ -1,0 +1,14 @@
+[Unit]
+Description=ZeroClaw independent sentry daemon
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/zeroclaw-home-assistant/server
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /opt/zeroclaw-home-assistant/server/sentry_daemon.py --interval 300 --startup-delay 20
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
